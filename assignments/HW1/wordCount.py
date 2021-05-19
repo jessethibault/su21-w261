@@ -33,10 +33,10 @@ for line in sys.stdin:
 
 ############ YOUR CODE HERE #########
 
+    for word in words:
+        counts[word] += 1
 
-
-
-
-
+for word in counts:
+    print(f"{word}\t{counts[word]}\r")
 
 ############ (END) YOUR CODE #########

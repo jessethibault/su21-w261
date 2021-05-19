@@ -93,8 +93,11 @@ if [ $# -eq 4 ]
     reducer=$4
     ################ YOUR CODE HERE #############
     #Q6c
-
-
+    
+    cat $countfiles > "data/tmp.txt"
+    ./$reducer < "data/tmp.txt" > $data.output
+    \rm "data/tmp.txt"
+    
     ################# (END YOUR CODE)###########
 fi
 

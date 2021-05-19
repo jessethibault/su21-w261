@@ -19,18 +19,26 @@ Instructions:
 # imports
 import sys
 
+########### PROVIDED IMPLEMENTATION ##############  
 
-################# YOUR CODE HERE #################
+current_sum = 0
+current_word = ""
 
-
-
-
-
-
-
-
-
-
-
-
-################ (END) YOUR CODE #################
+# stream over lines from Standard Input
+for line in sys.stdin:
+    # extract words & counts
+    word, count  = line.split()
+    
+    if current_word == "":
+        current_word = word
+    
+    # if word matches current word, add to current sum
+    if current_word == word:
+        current_sum += int(count)
+    else:
+        # print count for finished word
+        print(f"{current_word}\t{current_sum}")
+        current_word = word
+        current_sum = int(count)
+    
+########## (END) PROVIDED IMPLEMENTATION #########
