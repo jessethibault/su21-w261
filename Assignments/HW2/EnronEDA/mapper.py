@@ -8,6 +8,10 @@ OUTPUT:
 """
 import re
 import sys
+from collections import defaultdict
+
+counts_spam = defaultdict(int)
+counts_ham = defaultdict(int)
 
 # read from standard input
 for line in sys.stdin:
@@ -17,6 +21,15 @@ for line in sys.stdin:
     words = re.findall(r'[a-z]+', subject + ' ' + body)
     
 ############ YOUR CODE HERE #########
+    for word in words:
+        if _class == "0":
+            counts_ham[word] += 1
+        else:
+            counts_spam[word] += 1
 
+for word in counts_ham:
+    print(f"{word}\t0\t{counts_ham[word]}\r")
+for word in counts_spam:
+    print(f"{word}\t1\t{counts_spam[word]}\r")
 
 ############ (END) YOUR CODE #########
