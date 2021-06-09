@@ -53,9 +53,22 @@ for line in sys.stdin:
     # TIP: try using MODEL.get(word, (0,0)) to access the tuple 
     # of log probabilities without throwing a KeyError!
 
-
-
-
+    for word in words:
+        probs = MODEL.get(word, (1,1))
+        
+        # If we have words in our entry, let's initialize our probabilities to 0
+        if logpSpam == None:
+            logpSpam = 0
+        if logpHam == None:
+            logpHam = 0
+            
+        logpHam += probs[0]
+        logpSpam += probs[1] 
+        
+    if logpHam >= logpSpam:
+        pred_class = 0
+    else:
+        pred_class = 1
 
     ################# (END) YOUR CODE ##############
     
